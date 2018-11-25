@@ -1,0 +1,57 @@
+module buzzer (
+    input clk,  // clock
+    input rst,  // reset
+    output out
+  ) {
+  var pass;
+  var fail;
+  var buffer;
+  
+  dff timer[26] (.clk(clk), .rst(rst));
+  always {
+    out = 1;
+    pass = 0;
+    fail = 0;
+    timer.d = timer.q + 1;
+    
+    //two buzzes for fail
+    if(fail == 1){
+      out = 1;
+      timer.d = 0;
+      buffer = 1;
+      
+      if (timer.q[24] == 1 & buffer == 1){
+        out = 0;
+        timer.d = 0;
+        fail = 2;
+        buffer = 0;
+      }
+    }else if(timer.q[24] == 1 & fail == 2){
+      out = 1;
+      buffer = 1;
+      timer.d = 0;
+      
+      if (timer.q[24] == 1 & buffer == 1){
+        out = 0;
+        fail = 0;
+        timer.d = 0;
+        buffer = 0;
+      }
+      
+    }
+    
+    //one buzz for pass
+    if(pass == 1){
+      out = 1;
+      timer.d = 0;
+      buffer = 1;
+      if (timer.q[24] == 1 & buffer == 1){
+        out = 0;
+        timer.d = 0;
+        buffer = 0;
+        pass = 0;
+        
+      }
+    }
+  }
+}

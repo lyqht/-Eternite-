@@ -1,0 +1,32 @@
+module eternite_alufunctions (
+    input a[16],
+    input b[16],
+    input alufn[3],
+    output out[16]
+  ) {
+  
+  always {
+    out = 0;
+    
+    case(alufn){
+      Func.ADD:
+        out = a + b;      //add logic      
+      Func.MUL:
+        out = a*b;    //Multiplies a and b
+      
+      Func.NOR:
+        out = ~(a | b);        //NOR Logic
+      Func.XOR:
+        out =   a ^ b;         //XOR Logic
+      Func.LDR:
+        out =   a;             //Loads A
+      
+      Func.CMPEQ:
+        out = a == b;      //compares whether a is equals to b
+      
+      Func.OVFL:
+        out = ( ~(a[15] + b[15]) & a[15] & b[15]) || (~a[15] & ~b[15] & (a[15] + b[15])  );// Checks for overflow. Formula = ~a & ~b & (a + b) | a & B & ~(a+b) 
+      
+    }
+  }
+}
