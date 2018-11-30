@@ -1,0 +1,88 @@
+#<===================Outputs===========================>
+
+#User Input LEDs
+NET "user_input_led<0>"  LOC = P58 | IOSTANDARD = LVTTL;
+NET "user_input_led<1>"  LOC = P67 | IOSTANDARD = LVTTL;
+NET "user_input_led<2>"  LOC = P75 | IOSTANDARD = LVTTL;
+NET "user_input_led<3>"  LOC = P79 | IOSTANDARD = LVTTL;
+NET "user_input_led<4>"  LOC = P81 | IOSTANDARD = LVTTL;
+NET "user_input_led<5>"  LOC = P83 | IOSTANDARD = LVTTL;
+NET "user_input_led<6>"  LOC = P85 | IOSTANDARD = LVTTL;
+NET "user_input_led<7>"  LOC = P88 | IOSTANDARD = LVTTL;
+NET "user_input_led<8>"  LOC = P93 | IOSTANDARD = LVTTL;
+NET "user_input_led<9>"  LOC = P95 | IOSTANDARD = LVTTL;
+NET "user_input_led<10>" LOC = P98 | IOSTANDARD = LVTTL;
+NET "user_input_led<11>" LOC = P100 | IOSTANDARD = LVTTL;
+NET "user_input_led<12>" LOC = P102 | IOSTANDARD = LVTTL;
+NET "user_input_led<13>" LOC = P105| IOSTANDARD = LVTTL;
+NET "user_input_led<14>" LOC = P112 | IOSTANDARD = LVTTL;
+NET "user_input_led<15>" LOC = P115 | IOSTANDARD = LVTTL;
+
+#Game Difficulty LED x2
+NET "ledD<0>" LOC = P26 | IOSTANDARD = LVTTL;
+NET "ledD<1>" LOC = P23 | IOSTANDARD = LVTTL;
+
+
+#Game Stages LEDs x4
+NET "stage<0>" LOC = P11 | IOSTANDARD = LVTTL;
+NET "stage<1>" LOC = P14 | IOSTANDARD = LVTTL;
+NET "stage<2>" LOC = P16 | IOSTANDARD = LVTTL;
+NET "stage<3>" LOC = P21 | IOSTANDARD = LVTTL;
+
+#Timer LEDs x10, Goes off from the least significant bit to most significant bit
+NET "timer_led<0>" LOC = P29 | IOSTANDARD = LVTTL;
+NET "timer_led<1>" LOC = P32 | IOSTANDARD = LVTTL;
+NET "timer_led<2>" LOC = P34 | IOSTANDARD = LVTTL;
+NET "timer_led<3>" LOC = P40 | IOSTANDARD = LVTTL;
+NET "timer_led<4>" LOC = P50 | IOSTANDARD = LVTTL;
+NET "timer_led<5>" LOC = P30 | IOSTANDARD = LVTTL;
+NET "timer_led<6>" LOC = P33 | IOSTANDARD = LVTTL;
+NET "timer_led<7>" LOC = P35 | IOSTANDARD = LVTTL;
+NET "timer_led<8>" LOC = P41 | IOSTANDARD = LVTTL;
+NET "timer_led<9>" LOC = P51 | IOSTANDARD = LVTTL;
+
+#Right/Wrong LEDs x2
+NET "right_led" LOC = P9 | IOSTANDARD = LVTTL;
+NET "wrong_led" LOC = P7 | IOSTANDARD = LVTTL;
+
+#buzzer KIV
+NET "buzzer" LOC = P5 | IOSTANDARD = LVTTL;
+
+
+
+
+#<================Inputs===================>
+#!!PULLDOWN IS NEEDED TO PREVENT FLOATING INPUT
+
+#user
+NET "user_input<0>"  LOC = P57  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<1>"  LOC = P66  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<2>"  LOC = P74  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<3>"  LOC = P78  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<4>"  LOC = P80  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<5>"  LOC = P82  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<6>"  LOC = P84  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<7>"  LOC = P87  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<8>"  LOC = P92  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<9>"  LOC = P94  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<10>" LOC = P97  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<11>" LOC = P99  | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<12>" LOC = P101 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<13>" LOC = P104 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<14>" LOC = P111 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "user_input<15>" LOC = P114 | IOSTANDARD = LVTTL | PULLDOWN;
+
+
+#A/B Toggle Switch
+NET "toggleAB" LOC = P8 | IOSTANDARD = LVTTL | PULLDOWN;
+
+
+#Enter Button
+NET "enter_btn" LOC = P10 | IOSTANDARD = LVTTL | PULLDOWN;
+
+
+#Difficulty Level Toggle
+NET "toggleD<0>" LOC = P27 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "toggleD<1>" LOC = P24 | IOSTANDARD = LVTTL | PULLDOWN;
+
+

@@ -1,0 +1,1748 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+D:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -o
+mojo_top_0.twr -v 30 -l 30 mojo_top_0_routed.ncd mojo_top_0.pcf
+
+Design file:              mojo_top_0_routed.ncd
+Physical constraint file: mojo_top_0.pcf
+Device,package,speed:     xc6slx9,tqg144,C,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report, limited to 30 items per constraint
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 15707 paths analyzed, 347 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  11.808ns.
+--------------------------------------------------------------------------------
+Slack:                  8.192ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      11.101ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.672ns (0.690 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.C4      net (fanout=2)        0.924   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Tilo                  0.403   N63
+                                                       combine/Mmux_out14_G
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     11.101ns (3.568ns logic, 7.533ns route)
+                                                       (32.1% logic, 67.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.282ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      11.011ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.672ns (0.690 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.D4      net (fanout=2)        0.835   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Topdc                 0.402   N63
+                                                       combine/Mmux_out14_F
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     11.011ns (3.567ns logic, 7.444ns route)
+                                                       (32.4% logic, 67.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.455ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.839ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.671ns (0.690 - 1.361)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.C4      net (fanout=2)        0.924   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Tilo                  0.403   N63
+                                                       combine/Mmux_out14_G
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.839ns (3.413ns logic, 7.426ns route)
+                                                       (31.5% logic, 68.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.543ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.750ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.672ns (0.690 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X10Y34.A4      net (fanout=6)        0.789   M_combine_out[5]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.750ns (3.558ns logic, 7.192ns route)
+                                                       (33.1% logic, 66.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.545ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.749ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.671ns (0.690 - 1.361)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.D4      net (fanout=2)        0.835   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Topdc                 0.402   N63
+                                                       combine/Mmux_out14_F
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.749ns (3.412ns logic, 7.337ns route)
+                                                       (31.7% logic, 68.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.687ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd1_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.609ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.669ns (0.600 - 1.269)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd1_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X12Y35.B2      net (fanout=6)        1.047   M_combine_out[5]
+    SLICE_X12Y35.B       Tilo                  0.254   N15
+                                                       M_combine_out[7]_GND_1_o_equal_73_o41
+    SLICE_X14Y33.A4      net (fanout=5)        0.724   M_combine_out[7]_GND_1_o_equal_73_o
+    SLICE_X14Y33.A       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd1-In13
+    SLICE_X14Y31.BX      net (fanout=1)        0.673   M_diff_lvls_q_FSM_FFd1-In1
+    SLICE_X14Y31.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd1_0
+                                                       M_diff_lvls_q_FSM_FFd1_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.609ns (3.577ns logic, 7.032ns route)
+                                                       (33.7% logic, 66.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.693ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd5 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.599ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X12Y35.B2      net (fanout=6)        1.047   M_combine_out[5]
+    SLICE_X12Y35.B       Tilo                  0.254   N15
+                                                       M_combine_out[7]_GND_1_o_equal_73_o41
+    SLICE_X12Y35.C4      net (fanout=5)        0.351   M_combine_out[7]_GND_1_o_equal_73_o
+    SLICE_X12Y35.C       Tilo                  0.255   N15
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>2_SW2
+    SLICE_X13Y33.A2      net (fanout=1)        0.757   N66
+    SLICE_X13Y33.CLK     Tas                   0.373   M_diff_lvls_q_FSM_FFd7
+                                                       M_diff_lvls_q_FSM_FFd5-In1
+                                                       M_diff_lvls_q_FSM_FFd5
+    -------------------------------------------------  ---------------------------
+    Total                                     10.599ns (3.856ns logic, 6.743ns route)
+                                                       (36.4% logic, 63.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.730ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_0 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.568ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.667ns (0.690 - 1.357)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_0 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X9Y2.Q4       Tickq                 1.778   user_input_0_IBUF
+                                                       M_b_q_0
+    SLICE_X16Y32.A4      net (fanout=7)        2.503   M_b_q[0]
+    SLICE_X16Y32.COUT    Topcya                0.474   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<0>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.C4      net (fanout=2)        0.924   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Tilo                  0.403   N63
+                                                       combine/Mmux_out14_G
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.568ns (3.559ns logic, 7.009ns route)
+                                                       (33.7% logic, 66.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.768ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.524ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.C4      net (fanout=2)        0.924   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Tilo                  0.403   N63
+                                                       combine/Mmux_out14_G
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.CLK     Tas                   0.349   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+                                                       M_diff_lvls_q_FSM_FFd2
+    -------------------------------------------------  ---------------------------
+    Total                                     10.524ns (3.568ns logic, 6.956ns route)
+                                                       (33.9% logic, 66.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.806ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.488ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.671ns (0.690 - 1.361)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X10Y34.A4      net (fanout=6)        0.789   M_combine_out[5]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.488ns (3.403ns logic, 7.085ns route)
+                                                       (32.4% logic, 67.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.820ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_0 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.478ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.667ns (0.690 - 1.357)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_0 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X9Y2.Q4       Tickq                 1.778   user_input_0_IBUF
+                                                       M_b_q_0
+    SLICE_X16Y32.A4      net (fanout=7)        2.503   M_b_q[0]
+    SLICE_X16Y32.COUT    Topcya                0.474   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<0>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.D4      net (fanout=2)        0.835   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Topdc                 0.402   N63
+                                                       combine/Mmux_out14_F
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.478ns (3.558ns logic, 6.920ns route)
+                                                       (34.0% logic, 66.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.858ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.434ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.D4      net (fanout=2)        0.835   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Topdc                 0.402   N63
+                                                       combine/Mmux_out14_F
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.CLK     Tas                   0.349   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+                                                       M_diff_lvls_q_FSM_FFd2
+    -------------------------------------------------  ---------------------------
+    Total                                     10.434ns (3.567ns logic, 6.867ns route)
+                                                       (34.2% logic, 65.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.880ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd6 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.412ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.CMUX    Tcinc                 0.279   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X16Y31.C3      net (fanout=2)        0.647   combine/a[15]_b[15]_add_0_OUT[6]
+    SLICE_X16Y31.CMUX    Tilo                  0.430   N74
+                                                       combine/Mmux_out13_G
+                                                       combine/Mmux_out13
+    SLICE_X12Y30.D2      net (fanout=12)       1.291   M_combine_out[6]
+    SLICE_X12Y30.CMUX    Topdc                 0.456   N68
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW0_F
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW0
+    SLICE_X13Y33.B2      net (fanout=1)        1.645   N68
+    SLICE_X13Y33.CLK     Tas                   0.373   M_diff_lvls_q_FSM_FFd7
+                                                       M_diff_lvls_q_FSM_FFd6-In11
+                                                       M_diff_lvls_q_FSM_FFd6
+    -------------------------------------------------  ---------------------------
+    Total                                     10.412ns (3.799ns logic, 6.613ns route)
+                                                       (36.5% logic, 63.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.923ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd6 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.369ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.CMUX    Tcinc                 0.279   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X16Y31.D4      net (fanout=2)        0.578   combine/a[15]_b[15]_add_0_OUT[6]
+    SLICE_X16Y31.CMUX    Topdc                 0.456   N74
+                                                       combine/Mmux_out13_F
+                                                       combine/Mmux_out13
+    SLICE_X12Y30.D2      net (fanout=12)       1.291   M_combine_out[6]
+    SLICE_X12Y30.CMUX    Topdc                 0.456   N68
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW0_F
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW0
+    SLICE_X13Y33.B2      net (fanout=1)        1.645   N68
+    SLICE_X13Y33.CLK     Tas                   0.373   M_diff_lvls_q_FSM_FFd7
+                                                       M_diff_lvls_q_FSM_FFd6-In11
+                                                       M_diff_lvls_q_FSM_FFd6
+    -------------------------------------------------  ---------------------------
+    Total                                     10.369ns (3.825ns logic, 6.544ns route)
+                                                       (36.9% logic, 63.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.950ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd1_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.347ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.668ns (0.600 - 1.268)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd1_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X12Y35.B2      net (fanout=6)        1.047   M_combine_out[5]
+    SLICE_X12Y35.B       Tilo                  0.254   N15
+                                                       M_combine_out[7]_GND_1_o_equal_73_o41
+    SLICE_X14Y33.A4      net (fanout=5)        0.724   M_combine_out[7]_GND_1_o_equal_73_o
+    SLICE_X14Y33.A       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd1-In13
+    SLICE_X14Y31.BX      net (fanout=1)        0.673   M_diff_lvls_q_FSM_FFd1-In1
+    SLICE_X14Y31.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd1_0
+                                                       M_diff_lvls_q_FSM_FFd1_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.347ns (3.422ns logic, 6.925ns route)
+                                                       (33.1% logic, 66.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.956ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd5 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.337ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.672ns (0.689 - 1.361)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X12Y35.B2      net (fanout=6)        1.047   M_combine_out[5]
+    SLICE_X12Y35.B       Tilo                  0.254   N15
+                                                       M_combine_out[7]_GND_1_o_equal_73_o41
+    SLICE_X12Y35.C4      net (fanout=5)        0.351   M_combine_out[7]_GND_1_o_equal_73_o
+    SLICE_X12Y35.C       Tilo                  0.255   N15
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>2_SW2
+    SLICE_X13Y33.A2      net (fanout=1)        0.757   N66
+    SLICE_X13Y33.CLK     Tas                   0.373   M_diff_lvls_q_FSM_FFd7
+                                                       M_diff_lvls_q_FSM_FFd5-In1
+                                                       M_diff_lvls_q_FSM_FFd5
+    -------------------------------------------------  ---------------------------
+    Total                                     10.337ns (3.701ns logic, 6.636ns route)
+                                                       (35.8% logic, 64.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.963ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.330ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.672ns (0.690 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.D4      net (fanout=2)        1.139   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Topdc                 0.402   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_F
+                                                       combine/Mmux_out12
+    SLICE_X10Y34.A4      net (fanout=6)        0.789   M_combine_out[5]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.330ns (3.557ns logic, 6.773ns route)
+                                                       (34.4% logic, 65.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  8.980ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd8 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.310ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.675ns (0.687 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.C4      net (fanout=2)        0.924   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Tilo                  0.403   N63
+                                                       combine/Mmux_out14_G
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X12Y34.A5      net (fanout=2)        1.034   N82
+    SLICE_X12Y34.CLK     Tas                   0.339   M_diff_lvls_q_FSM_FFd9
+                                                       M_diff_lvls_q_FSM_FFd8-In3
+                                                       M_diff_lvls_q_FSM_FFd8
+    -------------------------------------------------  ---------------------------
+    Total                                     10.310ns (3.558ns logic, 6.752ns route)
+                                                       (34.5% logic, 65.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.031ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.262ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.672ns (0.689 - 1.361)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.C4      net (fanout=2)        0.924   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Tilo                  0.403   N63
+                                                       combine/Mmux_out14_G
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.CLK     Tas                   0.349   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+                                                       M_diff_lvls_q_FSM_FFd2
+    -------------------------------------------------  ---------------------------
+    Total                                     10.262ns (3.413ns logic, 6.849ns route)
+                                                       (33.3% logic, 66.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.050ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.242ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.COUT    Tbyp                  0.093   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X16Y34.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+    SLICE_X16Y34.COUT    Tbyp                  0.093   combine/Madd_a[15]_b[15]_add_0_OUT_cy[11]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<11>
+    SLICE_X16Y35.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[11]
+    SLICE_X16Y35.CMUX    Tcinc                 0.279   a[15]_b[15]_add_0_OUT[15]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_xor<15>
+    SLICE_X15Y35.C1      net (fanout=1)        0.748   a[15]_b[15]_add_0_OUT[14]
+    SLICE_X15Y35.C       Tilo                  0.259   M_combine_out[15]_GND_1_o_equal_54_o<15>13
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>12
+    SLICE_X14Y34.B1      net (fanout=1)        0.727   M_combine_out[15]_GND_1_o_equal_54_o<15>12
+    SLICE_X14Y34.B       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>111
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>19
+    SLICE_X14Y34.A5      net (fanout=1)        0.196   M_combine_out[15]_GND_1_o_equal_54_o<15>19
+    SLICE_X14Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>111
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>114
+    SLICE_X13Y34.A1      net (fanout=6)        0.882   M_combine_out[15]_GND_1_o_equal_54_o<15>114
+    SLICE_X13Y34.A       Tilo                  0.259   M_diff_lvls_q_FSM_FFd11
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119
+    SLICE_X14Y33.D3      net (fanout=4)        0.590   M_combine_out[15]_GND_1_o_equal_54_o<15>1
+    SLICE_X14Y33.CLK     Tas                   0.349   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd4-In21
+                                                       M_diff_lvls_q_FSM_FFd4
+    -------------------------------------------------  ---------------------------
+    Total                                     10.242ns (4.063ns logic, 6.179ns route)
+                                                       (39.7% logic, 60.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.070ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd8 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.220ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.675ns (0.687 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.D4      net (fanout=2)        0.835   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Topdc                 0.402   N63
+                                                       combine/Mmux_out14_F
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X12Y34.A5      net (fanout=2)        1.034   N82
+    SLICE_X12Y34.CLK     Tas                   0.339   M_diff_lvls_q_FSM_FFd9
+                                                       M_diff_lvls_q_FSM_FFd8-In3
+                                                       M_diff_lvls_q_FSM_FFd8
+    -------------------------------------------------  ---------------------------
+    Total                                     10.220ns (3.557ns logic, 6.663ns route)
+                                                       (34.8% logic, 65.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.077ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd12 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.213ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.675ns (0.687 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd12
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.CMUX    Tcinc                 0.279   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X16Y31.C3      net (fanout=2)        0.647   combine/a[15]_b[15]_add_0_OUT[6]
+    SLICE_X16Y31.CMUX    Tilo                  0.430   N74
+                                                       combine/Mmux_out13_G
+                                                       combine/Mmux_out13
+    SLICE_X14Y30.A4      net (fanout=12)       1.366   M_combine_out[6]
+    SLICE_X14Y30.A       Tilo                  0.235   N63
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW2
+    SLICE_X12Y32.A2      net (fanout=1)        1.120   N72
+    SLICE_X12Y32.A       Tilo                  0.254   M_diff_lvls_q_FSM_FFd12_1
+                                                       M_diff_lvls_q_FSM_FFd12-In4
+    SLICE_X13Y34.AX      net (fanout=1)        0.477   M_diff_lvls_q_FSM_FFd12-In
+    SLICE_X13Y34.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd11
+                                                       M_diff_lvls_q_FSM_FFd12
+    -------------------------------------------------  ---------------------------
+    Total                                     10.213ns (3.573ns logic, 6.640ns route)
+                                                       (35.0% logic, 65.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.081ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_0 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.217ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.667ns (0.690 - 1.357)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_0 to M_diff_lvls_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X9Y2.Q4       Tickq                 1.778   user_input_0_IBUF
+                                                       M_b_q_0
+    SLICE_X16Y32.A4      net (fanout=7)        2.503   M_b_q[0]
+    SLICE_X16Y32.COUT    Topcya                0.474   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<0>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X10Y34.A4      net (fanout=6)        0.789   M_combine_out[5]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.B       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+    SLICE_X14Y32.AX      net (fanout=1)        0.577   M_diff_lvls_q_FSM_FFd2-In1
+    SLICE_X14Y32.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd2_1
+                                                       M_diff_lvls_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.217ns (3.549ns logic, 6.668ns route)
+                                                       (34.7% logic, 65.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.107ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd1_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.189ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.669ns (0.600 - 1.269)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd1_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.D4      net (fanout=2)        1.139   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Topdc                 0.402   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_F
+                                                       combine/Mmux_out12
+    SLICE_X12Y35.B2      net (fanout=6)        1.047   M_combine_out[5]
+    SLICE_X12Y35.B       Tilo                  0.254   N15
+                                                       M_combine_out[7]_GND_1_o_equal_73_o41
+    SLICE_X14Y33.A4      net (fanout=5)        0.724   M_combine_out[7]_GND_1_o_equal_73_o
+    SLICE_X14Y33.A       Tilo                  0.235   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd1-In13
+    SLICE_X14Y31.BX      net (fanout=1)        0.673   M_diff_lvls_q_FSM_FFd1-In1
+    SLICE_X14Y31.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd1_0
+                                                       M_diff_lvls_q_FSM_FFd1_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.189ns (3.576ns logic, 6.613ns route)
+                                                       (35.1% logic, 64.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.113ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd5 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.179ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.D4      net (fanout=2)        1.139   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Topdc                 0.402   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_F
+                                                       combine/Mmux_out12
+    SLICE_X12Y35.B2      net (fanout=6)        1.047   M_combine_out[5]
+    SLICE_X12Y35.B       Tilo                  0.254   N15
+                                                       M_combine_out[7]_GND_1_o_equal_73_o41
+    SLICE_X12Y35.C4      net (fanout=5)        0.351   M_combine_out[7]_GND_1_o_equal_73_o
+    SLICE_X12Y35.C       Tilo                  0.255   N15
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>2_SW2
+    SLICE_X13Y33.A2      net (fanout=1)        0.757   N66
+    SLICE_X13Y33.CLK     Tas                   0.373   M_diff_lvls_q_FSM_FFd7
+                                                       M_diff_lvls_q_FSM_FFd5-In1
+                                                       M_diff_lvls_q_FSM_FFd5
+    -------------------------------------------------  ---------------------------
+    Total                                     10.179ns (3.855ns logic, 6.324ns route)
+                                                       (37.9% logic, 62.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.113ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd5 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.179ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.COUT    Tbyp                  0.093   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X16Y34.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+    SLICE_X16Y34.COUT    Tbyp                  0.093   combine/Madd_a[15]_b[15]_add_0_OUT_cy[11]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<11>
+    SLICE_X16Y35.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[11]
+    SLICE_X16Y35.CMUX    Tcinc                 0.279   a[15]_b[15]_add_0_OUT[15]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_xor<15>
+    SLICE_X15Y35.C1      net (fanout=1)        0.748   a[15]_b[15]_add_0_OUT[14]
+    SLICE_X15Y35.C       Tilo                  0.259   M_combine_out[15]_GND_1_o_equal_54_o<15>13
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>12
+    SLICE_X14Y34.B1      net (fanout=1)        0.727   M_combine_out[15]_GND_1_o_equal_54_o<15>12
+    SLICE_X14Y34.B       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>111
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>19
+    SLICE_X14Y34.A5      net (fanout=1)        0.196   M_combine_out[15]_GND_1_o_equal_54_o<15>19
+    SLICE_X14Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>111
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>114
+    SLICE_X13Y34.A1      net (fanout=6)        0.882   M_combine_out[15]_GND_1_o_equal_54_o<15>114
+    SLICE_X13Y34.A       Tilo                  0.259   M_diff_lvls_q_FSM_FFd11
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119
+    SLICE_X13Y33.A4      net (fanout=4)        0.503   M_combine_out[15]_GND_1_o_equal_54_o<15>1
+    SLICE_X13Y33.CLK     Tas                   0.373   M_diff_lvls_q_FSM_FFd7
+                                                       M_diff_lvls_q_FSM_FFd5-In1
+                                                       M_diff_lvls_q_FSM_FFd5
+    -------------------------------------------------  ---------------------------
+    Total                                     10.179ns (4.087ns logic, 6.092ns route)
+                                                       (40.2% logic, 59.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.119ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.173ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.673ns (0.689 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.BMUX    Tcinb                 0.310   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X10Y34.C2      net (fanout=2)        1.558   combine/a[15]_b[15]_add_0_OUT[5]
+    SLICE_X10Y34.CMUX    Tilo                  0.403   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       combine/Mmux_out12_G
+                                                       combine/Mmux_out12
+    SLICE_X10Y34.A4      net (fanout=6)        0.789   M_combine_out[5]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.CLK     Tas                   0.349   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+                                                       M_diff_lvls_q_FSM_FFd2
+    -------------------------------------------------  ---------------------------
+    Total                                     10.173ns (3.558ns logic, 6.615ns route)
+                                                       (35.0% logic, 65.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.120ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_1 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd12 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.170ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.675ns (0.687 - 1.362)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_1 to M_diff_lvls_q_FSM_FFd12
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X11Y2.Q4      Tickq                 1.778   user_input_1_IBUF
+                                                       M_b_q_1
+    SLICE_X16Y32.B4      net (fanout=6)        3.027   M_b_q[1]
+    SLICE_X16Y32.COUT    Topcyb                0.483   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<1>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.CMUX    Tcinc                 0.279   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X16Y31.D4      net (fanout=2)        0.578   combine/a[15]_b[15]_add_0_OUT[6]
+    SLICE_X16Y31.CMUX    Topdc                 0.456   N74
+                                                       combine/Mmux_out13_F
+                                                       combine/Mmux_out13
+    SLICE_X14Y30.A4      net (fanout=12)       1.366   M_combine_out[6]
+    SLICE_X14Y30.A       Tilo                  0.235   N63
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW2
+    SLICE_X12Y32.A2      net (fanout=1)        1.120   N72
+    SLICE_X12Y32.A       Tilo                  0.254   M_diff_lvls_q_FSM_FFd12_1
+                                                       M_diff_lvls_q_FSM_FFd12-In4
+    SLICE_X13Y34.AX      net (fanout=1)        0.477   M_diff_lvls_q_FSM_FFd12-In
+    SLICE_X13Y34.CLK     Tdick                 0.114   M_diff_lvls_q_FSM_FFd11
+                                                       M_diff_lvls_q_FSM_FFd12
+    -------------------------------------------------  ---------------------------
+    Total                                     10.170ns (3.599ns logic, 6.571ns route)
+                                                       (35.4% logic, 64.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.121ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.172ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.672ns (0.689 - 1.361)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.DMUX    Tcind                 0.320   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X14Y30.D4      net (fanout=2)        0.835   combine/a[15]_b[15]_add_0_OUT[7]
+    SLICE_X14Y30.CMUX    Topdc                 0.402   N63
+                                                       combine/Mmux_out14_F
+                                                       combine/Mmux_out14
+    SLICE_X10Y34.A2      net (fanout=10)       1.764   M_combine_out[7]
+    SLICE_X10Y34.A       Tilo                  0.235   M_combine_out[15]_GND_1_o_equal_54_o<15>118
+                                                       M_combine_out[15]_GND_1_o_equal_54_o<15>119_SW0
+    SLICE_X14Y33.B3      net (fanout=2)        1.238   N82
+    SLICE_X14Y33.CLK     Tas                   0.349   M_diff_lvls_q_FSM_FFd4
+                                                       M_diff_lvls_q_FSM_FFd2-In11
+                                                       M_diff_lvls_q_FSM_FFd2
+    -------------------------------------------------  ---------------------------
+    Total                                     10.172ns (3.412ns logic, 6.760ns route)
+                                                       (33.5% logic, 66.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  9.143ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_b_q_2 (FF)
+  Destination:          M_diff_lvls_q_FSM_FFd6 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      10.150ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.672ns (0.689 - 1.361)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_b_q_2 to M_diff_lvls_q_FSM_FFd6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    ILOGIC_X12Y4.Q4      Tickq                 1.778   user_input_2_IBUF
+                                                       M_b_q_2
+    SLICE_X16Y32.C3      net (fanout=7)        2.920   M_b_q[2]
+    SLICE_X16Y32.COUT    Topcyc                0.328   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_lut<2>
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<3>
+    SLICE_X16Y33.CIN     net (fanout=1)        0.003   combine/Madd_a[15]_b[15]_add_0_OUT_cy[3]
+    SLICE_X16Y33.CMUX    Tcinc                 0.279   combine/Madd_a[15]_b[15]_add_0_OUT_cy[7]
+                                                       combine/Madd_a[15]_b[15]_add_0_OUT_cy<7>
+    SLICE_X16Y31.C3      net (fanout=2)        0.647   combine/a[15]_b[15]_add_0_OUT[6]
+    SLICE_X16Y31.CMUX    Tilo                  0.430   N74
+                                                       combine/Mmux_out13_G
+                                                       combine/Mmux_out13
+    SLICE_X12Y30.D2      net (fanout=12)       1.291   M_combine_out[6]
+    SLICE_X12Y30.CMUX    Topdc                 0.456   N68
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW0_F
+                                                       M_combine_out[15]_GND_1_o_equal_27_o<15>21_SW0
+    SLICE_X13Y33.B2      net (fanout=1)        1.645   N68
+    SLICE_X13Y33.CLK     Tas                   0.373   M_diff_lvls_q_FSM_FFd7
+                                                       M_diff_lvls_q_FSM_FFd6-In11
+                                                       M_diff_lvls_q_FSM_FFd6
+    -------------------------------------------------  ---------------------------
+    Total                                     10.150ns (3.644ns logic, 6.506ns route)
+                                                       (35.9% logic, 64.1% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 17.334ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 2.666ns (375.094MHz) (Tbcper_I)
+  Physical resource: clk_BUFGP/BUFG/I0
+  Logical resource: clk_BUFGP/BUFG/I0
+  Location pin: BUFGMUX_X2Y11.I0
+  Clock network: clk_BUFGP/IBUFG
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_10_IBUF/CLK0
+  Logical resource: M_a_q_10/CLK0
+  Location pin: ILOGIC_X12Y46.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_10_IBUF/SR
+  Logical resource: M_a_q_10/SR
+  Location pin: ILOGIC_X12Y46.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_11_IBUF/CLK0
+  Logical resource: M_a_q_11/CLK0
+  Location pin: ILOGIC_X12Y48.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_11_IBUF/SR
+  Logical resource: M_a_q_11/SR
+  Location pin: ILOGIC_X12Y48.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_12_IBUF/CLK0
+  Logical resource: M_a_q_12/CLK0
+  Location pin: ILOGIC_X12Y50.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_12_IBUF/SR
+  Logical resource: M_a_q_12/SR
+  Location pin: ILOGIC_X12Y50.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_13_IBUF/CLK0
+  Logical resource: M_a_q_13/CLK0
+  Location pin: ILOGIC_X12Y58.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_13_IBUF/SR
+  Logical resource: M_a_q_13/SR
+  Location pin: ILOGIC_X12Y58.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_14_IBUF/CLK0
+  Logical resource: M_a_q_14/CLK0
+  Location pin: ILOGIC_X11Y60.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_14_IBUF/SR
+  Logical resource: M_a_q_14/SR
+  Location pin: ILOGIC_X11Y60.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_15_IBUF/CLK0
+  Logical resource: M_a_q_15/CLK0
+  Location pin: ILOGIC_X11Y62.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_15_IBUF/SR
+  Logical resource: M_a_q_15/SR
+  Location pin: ILOGIC_X11Y62.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_0_IBUF/CLK0
+  Logical resource: M_b_q_0/CLK0
+  Location pin: ILOGIC_X9Y2.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_0_IBUF/SR
+  Logical resource: M_b_q_0/SR
+  Location pin: ILOGIC_X9Y2.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_1_IBUF/CLK0
+  Logical resource: M_b_q_1/CLK0
+  Location pin: ILOGIC_X11Y2.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_1_IBUF/SR
+  Logical resource: M_b_q_1/SR
+  Location pin: ILOGIC_X11Y2.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_2_IBUF/CLK0
+  Logical resource: M_b_q_2/CLK0
+  Location pin: ILOGIC_X12Y4.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_2_IBUF/SR
+  Logical resource: M_b_q_2/SR
+  Location pin: ILOGIC_X12Y4.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_3_IBUF/CLK0
+  Logical resource: M_b_q_3/CLK0
+  Location pin: ILOGIC_X12Y20.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_3_IBUF/SR
+  Logical resource: M_b_q_3/SR
+  Location pin: ILOGIC_X12Y20.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_4_IBUF/CLK0
+  Logical resource: M_b_q_4/CLK0
+  Location pin: ILOGIC_X12Y22.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_4_IBUF/SR
+  Logical resource: M_b_q_4/SR
+  Location pin: ILOGIC_X12Y22.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_5_IBUF/CLK0
+  Logical resource: M_b_q_5/CLK0
+  Location pin: ILOGIC_X12Y24.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_5_IBUF/SR
+  Logical resource: M_b_q_5/SR
+  Location pin: ILOGIC_X12Y24.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_6_IBUF/CLK0
+  Logical resource: M_b_q_6/CLK0
+  Location pin: ILOGIC_X12Y28.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_6_IBUF/SR
+  Logical resource: M_b_q_6/SR
+  Location pin: ILOGIC_X12Y28.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_7_IBUF/CLK0
+  Logical resource: M_b_q_7/CLK0
+  Location pin: ILOGIC_X12Y30.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.933ns (Tispwh)
+  Physical resource: user_input_7_IBUF/SR
+  Logical resource: M_b_q_7/SR
+  Location pin: ILOGIC_X12Y30.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 18.134ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.866ns (535.906MHz) (Tickper)
+  Physical resource: user_input_8_IBUF/CLK0
+  Logical resource: M_b_q_8/CLK0
+  Location pin: ILOGIC_X12Y32.CLK0
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |   11.808|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 15707 paths, 0 nets, and 961 connections
+
+Design statistics:
+   Minimum period:  11.808ns{1}   (Maximum frequency:  84.688MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Fri Nov 30 02:03:43 2018 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 172 MB
+
+
+
