@@ -1,0 +1,15 @@
+module blinker (
+    input clk,  // clock
+    input rst,  // reset
+    output blink_fast,
+    output blink_med,
+    output blink_slow
+  ) {
+    dff counter[27] (.clk(clk),.rst(rst));
+  always {
+    blink_fast = counter.q[23];
+    blink_med = counter.q[24];
+    blink_slow = counter.q[25];
+    
+  }
+}

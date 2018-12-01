@@ -1,0 +1,186 @@
+module timer (
+    input clk,  // clock
+    input rst,  // reset
+    input state[2],
+    output led[10],
+    output timeout
+  ) {
+  
+  dff twenty[35](.clk(clk), .rst(rst));
+  dff fourty[35](.clk(clk), .rst(rst));
+  
+  fsm timer(.clk(clk), .rst(rst)) = {IDLE, TEN, NINE, EIGHT, SEVEN, SIX, FIVE, FOUR, THREE, TWO, ONE, TIMEOUT};
+  
+  blinker blink(.clk(clk), .rst(rst));
+  
+  always {
+    led = 0;
+    timeout = 0;
+    
+    case(timer.q){
+      timer.IDLE:
+        led = 10h2FF;
+        if(state == 1){
+          timer.d = timer.TEN;
+        }else if(state == 2){
+          timer.d = timer.EIGHT;
+        }else if(state == 3){
+          timer.d = timer.SIX;
+        }
+      
+      timer.TEN:
+        led = 10b111111111X;
+        led[9] = blink.blink_slow;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.NINE;
+          }
+        }
+      
+      timer.NINE:
+        led = 10b11111111XZ;
+        led[8] = blink.blink_slow;
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.EIGHT;
+          }
+        }
+      
+      timer.EIGHT:
+        led = 10b1111111XZZ;
+        led[7] = blink.blink_slow;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.SEVEN;
+          }
+        }
+      timer.SEVEN:
+        led = 10b111111XZZZ;
+        led[6] = blink.blink_med;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.SIX;
+          }
+        }
+      timer.SIX:
+        led = 10b11111XZZZZ;
+        led[5] = blink.blink_med;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.FIVE;
+          }
+        }
+      timer.FIVE:
+        led = 10b1111XZZZZZ;
+        led[4] = blink.blink_med;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.FOUR;
+          }
+        }
+      timer.FOUR:
+        led = 10b111XZZZZZZ;
+        led[3] = blink.blink_med;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.THREE;
+          }
+        }
+      timer.THREE:
+        led = 10b11XZZZZZZZ;
+        led[2] = blink.blink_med;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.TWO;
+          }
+        }
+      timer.TWO:
+        led = 10b1X00000000;
+        led[1] = blink.blink_slow;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.ONE;
+          }
+        }
+      timer.ONE:
+        led = 10bXZZZZZZZZZ;
+        led[1] = blink.blink_slow;
+        
+        fourty.d = fourty.q + 1;
+        if(fourty.q[31] == 1){
+          fourty.d[30:0] = 0;
+          
+          twenty.d = twenty.q + 1;
+          if(twenty.q[30] == 1){
+            
+            twenty.d[29:0] = 0;
+            timer.d = timer.TIMEOUT;
+          }
+        }
+      timer.TIMEOUT:
+        timeout = 1;
+    }
+  }
+}
