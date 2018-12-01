@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Nov 30 02:03:25 2018
+// Written by: Map P.20131013 on Sun Dec 02 03:14:55 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -12,6 +12,7 @@ COMP "user_input_led[12]" LOCATE = SITE "P102" LEVEL 1;
 COMP "user_input_led[13]" LOCATE = SITE "P105" LEVEL 1;
 COMP "user_input_led[14]" LOCATE = SITE "P112" LEVEL 1;
 COMP "user_input_led[15]" LOCATE = SITE "P115" LEVEL 1;
+COMP "buzz" LOCATE = SITE "P5" LEVEL 1;
 COMP "ledD[0]" LOCATE = SITE "P26" LEVEL 1;
 COMP "ledD[1]" LOCATE = SITE "P23" LEVEL 1;
 COMP "rst_n" LOCATE = SITE "P38" LEVEL 1;
@@ -74,33 +75,102 @@ COMP "stage[3]" LOCATE = SITE "P21" LEVEL 1;
 COMP "toggleAB" LOCATE = SITE "P8" LEVEL 1;
 COMP "spi_mosi" LOCATE = SITE "P44" LEVEL 1;
 COMP "wrong_led" LOCATE = SITE "P7" LEVEL 1;
-PIN combine/Mmult_n0021_pins<92> = BEL "combine/Mmult_n0021" PINNAME CLK;
-TIMEGRP clk = BEL "clk_BUFGP/BUFG" BEL "reset_cond/M_stage_q_3" BEL
-        "reset_cond/M_stage_q_2" BEL "reset_cond/M_stage_q_1" BEL
-        "reset_cond/M_stage_q_0" BEL "M_diff_lvls_q_FSM_FFd10" BEL
-        "M_diff_lvls_q_FSM_FFd11" BEL "M_diff_lvls_q_FSM_FFd12" BEL "M_b_q_0"
-        BEL "M_b_q_1" BEL "M_b_q_2" BEL "M_b_q_3" BEL "M_b_q_4" BEL "M_b_q_5"
-        BEL "M_b_q_6" BEL "M_b_q_7" BEL "M_b_q_8" BEL "M_b_q_9" BEL
-        "M_count_q_10" BEL "M_count_q_11" BEL "M_count_q_12" BEL
-        "M_count_q_13" BEL "M_count_q_14" BEL "M_count_q_15" BEL
-        "M_count_q_20" BEL "M_count_q_16" BEL "M_count_q_21" BEL
-        "M_count_q_17" BEL "M_count_q_22" BEL "M_count_q_18" BEL
-        "M_count_q_23" BEL "M_count_q_19" BEL "M_count_q_24" BEL
-        "M_count_q_25" BEL "M_count_q_26" BEL "M_diff_lvls_q_FSM_FFd1_1" BEL
+TIMEGRP clk = BEL "reset_cond/M_stage_q_3" BEL "reset_cond/M_stage_q_2" BEL
+        "reset_cond/M_stage_q_1" BEL "reset_cond/M_stage_q_0" BEL
         "M_diff_lvls_q_FSM_FFd1" BEL "M_diff_lvls_q_FSM_FFd2" BEL
         "M_diff_lvls_q_FSM_FFd3" BEL "M_diff_lvls_q_FSM_FFd4" BEL
-        "M_diff_lvls_q_FSM_FFd5" BEL "M_diff_lvls_q_FSM_FFd6" BEL
-        "M_diff_lvls_q_FSM_FFd7" BEL "M_diff_lvls_q_FSM_FFd8" BEL
-        "M_diff_lvls_q_FSM_FFd9" BEL "M_diff_lvls_q_FSM_FFd2_1" BEL
-        "M_count_q_0" BEL "M_count_q_1" BEL "M_count_q_2" BEL "M_count_q_3"
-        BEL "M_count_q_4" BEL "M_count_q_5" BEL "M_count_q_6" BEL
-        "M_count_q_7" BEL "M_count_q_8" BEL "M_count_q_9" BEL "M_a_q_0" BEL
-        "M_a_q_1" BEL "M_a_q_2" BEL "M_a_q_3" BEL "M_a_q_4" BEL "M_a_q_5" BEL
-        "M_a_q_6" BEL "M_a_q_7" BEL "M_a_q_8" BEL "M_a_q_9" BEL
-        "M_diff_lvls_q_FSM_FFd12_1" PIN "combine/Mmult_n0021_pins<92>" BEL
-        "M_a_q_10" BEL "M_a_q_11" BEL "M_a_q_12" BEL "M_a_q_13" BEL "M_a_q_14"
-        BEL "M_a_q_15" BEL "M_b_q_10" BEL "M_b_q_11" BEL "M_b_q_12" BEL
-        "M_b_q_13" BEL "M_b_q_14" BEL "M_b_q_15";
+        "M_diff_lvls_q_FSM_FFd1_1" BEL "M_diff_lvls_q_FSM_FFd1_2" BEL
+        "M_diff_lvls_q_FSM_FFd1_3" BEL "M_diff_lvls_q_FSM_FFd2_1" BEL
+        "M_diff_lvls_q_FSM_FFd2_2" BEL "M_a_q_0" BEL "M_a_q_1" BEL "M_a_q_2"
+        BEL "M_a_q_3" BEL "M_a_q_4" BEL "M_a_q_5" BEL "M_a_q_6" BEL "M_a_q_7"
+        BEL "M_a_q_8" BEL "M_a_q_9" BEL "M_diff_lvls_q_FSM_FFd3_1" BEL
+        "M_diff_lvls_q_FSM_FFd3_2" BEL "M_diff_lvls_q_FSM_FFd3_3" BEL
+        "timer/M_twenty_q_3" BEL "timer/M_twenty_q_4" BEL "timer/M_twenty_q_5"
+        BEL "timer/M_twenty_q_6" BEL "timer/M_twenty_q_7" BEL
+        "timer/M_twenty_q_8" BEL "timer/M_twenty_q_9" BEL
+        "timer/M_twenty_q_10" BEL "timer/M_fourty_q_10" BEL
+        "timer/M_twenty_q_11" BEL "timer/M_fourty_q_11" BEL
+        "timer/M_twenty_q_12" BEL "timer/M_fourty_q_12" BEL
+        "timer/M_twenty_q_13" BEL "timer/M_fourty_q_13" BEL
+        "timer/M_twenty_q_14" BEL "timer/M_fourty_q_14" BEL
+        "timer/M_twenty_q_15" BEL "timer/M_twenty_q_20" BEL
+        "timer/M_fourty_q_20" BEL "timer/M_twenty_q_16" BEL
+        "timer/M_twenty_q_21" BEL "timer/M_fourty_q_15" BEL
+        "timer/M_fourty_q_21" BEL "timer/M_twenty_q_17" BEL
+        "timer/M_twenty_q_22" BEL "timer/M_fourty_q_16" BEL
+        "timer/M_fourty_q_22" BEL "timer/M_twenty_q_18" BEL
+        "timer/M_twenty_q_23" BEL "timer/M_fourty_q_17" BEL
+        "timer/M_fourty_q_23" BEL "timer/M_twenty_q_19" BEL
+        "timer/M_twenty_q_24" BEL "timer/M_fourty_q_18" BEL
+        "timer/M_fourty_q_24" BEL "timer/M_twenty_q_25" BEL
+        "timer/M_twenty_q_30" BEL "timer/M_fourty_q_19" BEL
+        "timer/M_fourty_q_30" BEL "timer/M_twenty_q_26" BEL
+        "timer/M_fourty_q_25" BEL "timer/M_fourty_q_31" BEL
+        "timer/M_twenty_q_27" BEL "timer/M_fourty_q_26" BEL
+        "timer/M_fourty_q_27" BEL "timer/M_twenty_q_28" BEL
+        "timer/M_fourty_q_28" BEL "timer/M_twenty_q_29" BEL
+        "timer/M_fourty_q_29" BEL "timer/M_fourty_q_0" BEL
+        "timer/M_fourty_q_1" BEL "timer/M_fourty_q_2" BEL "timer/M_fourty_q_3"
+        BEL "timer/M_fourty_q_4" BEL "timer/M_fourty_q_5" BEL
+        "timer/M_fourty_q_6" BEL "timer/M_fourty_q_7" BEL "timer/M_fourty_q_8"
+        BEL "timer/M_fourty_q_9" BEL "timer/M_timer_q_FSM_FFd1" BEL
+        "timer/M_timer_q_FSM_FFd2" BEL "timer/M_timer_q_FSM_FFd3" BEL
+        "timer/M_timer_q_FSM_FFd4" BEL "timer/blink/M_counter_q_25" BEL
+        "timer/blink/M_counter_q_24" BEL "timer/blink/M_counter_q_23" BEL
+        "timer/blink/M_counter_q_22" BEL "timer/blink/M_counter_q_21" BEL
+        "timer/blink/M_counter_q_20" BEL "timer/blink/M_counter_q_19" BEL
+        "timer/M_twenty_q_0" BEL "timer/M_twenty_q_1" BEL "timer/M_twenty_q_2"
+        BEL "M_diff_lvls_q_FSM_FFd4_1" BEL "M_diff_lvls_q_FSM_FFd4_2" BEL
+        "M_diff_lvls_q_FSM_FFd4_3" BEL "M_count_q_0" BEL "M_count_q_1" BEL
+        "M_count_q_2" BEL "M_count_q_3" BEL "M_count_q_4" BEL "M_count_q_5"
+        BEL "M_count_q_6" BEL "M_count_q_7" BEL "M_count_q_8" BEL
+        "M_count_q_9" BEL "buzzer/M_freq_q_18" BEL "buzzer/M_freq_q_17" BEL
+        "buzzer/M_freq_q_16" BEL "buzzer/M_freq_q_15" BEL "buzzer/M_freq_q_14"
+        BEL "buzzer/M_freq_q_13" BEL "buzzer/M_freq_q_12" BEL
+        "buzzer/M_freq_q_11" BEL "buzzer/M_freq_q_10" BEL "buzzer/M_freq_q_9"
+        BEL "buzzer/M_freq_q_8" BEL "buzzer/M_freq_q_7" BEL
+        "buzzer/M_freq_q_6" BEL "buzzer/M_freq_q_5" BEL "buzzer/M_freq_q_4"
+        BEL "buzzer/M_freq_q_3" BEL "buzzer/M_freq_q_2" BEL
+        "buzzer/M_freq_q_1" BEL "buzzer/M_freq_q_0" BEL
+        "buzzer/M_right_wrong_q_FSM_FFd2" BEL
+        "buzzer/M_right_wrong_q_FSM_FFd1" BEL "buzzer/M_timer_q_26" BEL
+        "buzzer/M_timer_q_25" BEL "buzzer/M_timer_q_24" BEL
+        "buzzer/M_timer_q_23" BEL "buzzer/M_timer_q_22" BEL
+        "buzzer/M_timer_q_21" BEL "buzzer/M_timer_q_20" BEL
+        "buzzer/M_timer_q_19" BEL "buzzer/M_timer_q_18" BEL
+        "buzzer/M_timer_q_17" BEL "buzzer/M_timer_q_16" BEL
+        "buzzer/M_timer_q_15" BEL "buzzer/M_timer_q_14" BEL
+        "buzzer/M_timer_q_13" BEL "buzzer/M_timer_q_12" BEL
+        "buzzer/M_timer_q_11" BEL "buzzer/M_timer_q_10" BEL
+        "buzzer/M_timer_q_9" BEL "buzzer/M_timer_q_8" BEL "buzzer/M_timer_q_7"
+        BEL "buzzer/M_timer_q_6" BEL "buzzer/M_timer_q_5" BEL
+        "buzzer/M_timer_q_4" BEL "buzzer/M_timer_q_3" BEL "buzzer/M_timer_q_2"
+        BEL "buzzer/M_timer_q_1" BEL "buzzer/M_timer_q_0" BEL
+        "answer/M_pass_fail_q_FSM_FFd1" BEL "answer/M_pass_fail_q_FSM_FFd2"
+        BEL "answer/M_timer_q_26" BEL "answer/M_timer_q_25" BEL
+        "answer/M_timer_q_24" BEL "answer/M_timer_q_23" BEL
+        "answer/M_timer_q_22" BEL "answer/M_timer_q_21" BEL
+        "answer/M_timer_q_20" BEL "answer/M_timer_q_19" BEL
+        "answer/M_timer_q_18" BEL "answer/M_timer_q_17" BEL
+        "answer/M_timer_q_16" BEL "answer/M_timer_q_15" BEL
+        "answer/M_timer_q_14" BEL "answer/M_timer_q_13" BEL
+        "answer/M_timer_q_12" BEL "answer/M_timer_q_11" BEL
+        "answer/M_timer_q_10" BEL "answer/M_timer_q_9" BEL
+        "answer/M_timer_q_8" BEL "answer/M_timer_q_7" BEL "answer/M_timer_q_6"
+        BEL "answer/M_timer_q_5" BEL "answer/M_timer_q_4" BEL
+        "answer/M_timer_q_3" BEL "answer/M_timer_q_2" BEL "answer/M_timer_q_1"
+        BEL "answer/M_timer_q_0" BEL "M_count_q_10" BEL "M_count_q_11" BEL
+        "M_count_q_12" BEL "M_count_q_13" BEL "M_count_q_14" BEL
+        "M_count_q_20" BEL "M_count_q_15" BEL "M_count_q_21" BEL
+        "M_count_q_16" BEL "M_count_q_22" BEL "M_count_q_17" BEL
+        "M_count_q_23" BEL "M_count_q_18" BEL "M_count_q_24" BEL
+        "M_count_q_19" BEL "M_count_q_25" BEL "M_count_q_26" BEL
+        "M_count_q_27" BEL "M_a_q_10" BEL "M_a_q_11" BEL "M_a_q_12" BEL
+        "M_a_q_13" BEL "M_a_q_14" BEL "M_a_q_15" BEL "clk_BUFGP/BUFG" BEL
+        "M_b_q_10" BEL "M_b_q_11" BEL "M_b_q_12" BEL "M_b_q_13" BEL "M_b_q_0"
+        BEL "M_b_q_14" BEL "M_b_q_1" BEL "M_b_q_15" BEL "M_b_q_2" BEL
+        "M_b_q_3" BEL "M_b_q_4" BEL "M_b_q_5" BEL "M_b_q_6" BEL "M_b_q_7" BEL
+        "M_b_q_8" BEL "M_b_q_9";
 TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
 SCHEMATIC END;
 

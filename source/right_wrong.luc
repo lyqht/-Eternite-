@@ -3,24 +3,28 @@ module right_wrong (
     input rst,  // reset
     output right_led,
     output wrong_led,
-    output test,
+
     input state[2]
+    
+    
   ) {
   dff timer[29](.clk(clk), .rst(rst));
-  
+  //buzzer right choose 14th bit, wrong choose 19th bit, starting from 0th bit.
   fsm pass_fail (.clk(clk), .rst(rst)) = {IDLE, PASS, FAIL};
   
   
   always {
     right_led = 0;
     wrong_led = 0;
-    test = 0;
+
     timer.d = timer.q + 1;
+    
     
     case(pass_fail.q){
       pass_fail.IDLE:
-        test = 1;
-        
+        right_led = 0;
+        wrong_led = 0;
+ 
         if(state == 1){
           timer.d = 0;
           
@@ -34,7 +38,7 @@ module right_wrong (
       
       pass_fail.PASS:
         right_led = 1;
-        
+
         if(timer.q[26] == 1){
           timer.d = 0;
           
@@ -43,6 +47,7 @@ module right_wrong (
       
       pass_fail.FAIL:
         wrong_led = 1;
+
         if(timer.q[26] == 1){
           timer.d = 0;
           

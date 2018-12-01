@@ -10,6 +10,7 @@ module blinker (
     blink_fast = counter.q[23];
     blink_med = counter.q[24];
     blink_slow = counter.q[25];
+    counter.d = counter.q + 1;
     
   }
 }

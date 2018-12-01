@@ -1,8 +1,8 @@
 module timer (
     input clk,  // clock
     input rst,  // reset
-    input state[2],
-    output led[10],
+    input state[2], //0 = IDLE, 1= easy, 2=medium, 3 = hard
+    output ledt[10],
     output timeout
   ) {
   
@@ -14,23 +14,41 @@ module timer (
   blinker blink(.clk(clk), .rst(rst));
   
   always {
-    led = 0;
+    ledt = 0;
     timeout = 0;
+    
+    fourty.d = fourty.q + 1;
+    if(fourty.q[31] == 1){
+      fourty.d[30:0] = 0;
+      ledt[3:2] = 2b11;
+      
+      
+      twenty.d = twenty.q + 1;
+      if(twenty.q[30] == 1){
+        ledt[1:0] = 2b11;
+        
+        
+        twenty.d[29:0] = 0;
+        
+      }
+    }
     
     case(timer.q){
       timer.IDLE:
-        led = 10h2FF;
-        if(state == 1){
+        ledt = 10b1111111111;
+        if(state == 3){
           timer.d = timer.TEN;
         }else if(state == 2){
           timer.d = timer.EIGHT;
-        }else if(state == 3){
+        }else if(state == 1){
           timer.d = timer.SIX;
-        }
+        }else if (state == 0){
+          timer.d = timer.IDLE;
+          }
       
       timer.TEN:
-        led = 10b111111111X;
-        led[9] = blink.blink_slow;
+        ledt = 10b111111111X;
+        ledt[0] = blink.blink_slow;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -38,30 +56,31 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.NINE;
           }
         }
       
       timer.NINE:
-        led = 10b11111111XZ;
-        led[8] = blink.blink_slow;
+        ledt = 10b11111111X0;
+        ledt[1] = blink.blink_slow;
+
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
           fourty.d[30:0] = 0;
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.EIGHT;
           }
         }
       
       timer.EIGHT:
-        led = 10b1111111XZZ;
-        led[7] = blink.blink_slow;
+        ledt = 10b1111111X00;
+        ledt[2] = blink.blink_slow;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -69,14 +88,14 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.SEVEN;
           }
         }
       timer.SEVEN:
-        led = 10b111111XZZZ;
-        led[6] = blink.blink_med;
+        ledt = 10b111111X000;
+        ledt[3] = blink.blink_med;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -84,14 +103,14 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.SIX;
           }
         }
       timer.SIX:
-        led = 10b11111XZZZZ;
-        led[5] = blink.blink_med;
+        ledt = 10b11111X0000;
+        ledt[4] = blink.blink_med;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -99,14 +118,14 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.FIVE;
           }
         }
       timer.FIVE:
-        led = 10b1111XZZZZZ;
-        led[4] = blink.blink_med;
+        ledt = 10b1111X00000;
+        ledt[5] = blink.blink_med;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -114,14 +133,14 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.FOUR;
           }
         }
       timer.FOUR:
-        led = 10b111XZZZZZZ;
-        led[3] = blink.blink_med;
+        ledt = 10b111X000000;
+        ledt[6] = blink.blink_med;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -129,14 +148,14 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.THREE;
           }
         }
       timer.THREE:
-        led = 10b11XZZZZZZZ;
-        led[2] = blink.blink_med;
+        ledt= 10b11X0000000;
+        ledt[7] = blink.blink_med;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -144,14 +163,14 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.TWO;
           }
         }
       timer.TWO:
-        led = 10b1X00000000;
-        led[1] = blink.blink_slow;
+        ledt = 10b1X00000000;
+        ledt[8] = blink.blink_fast;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -159,14 +178,15 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.ONE;
           }
+        
         }
       timer.ONE:
-        led = 10bXZZZZZZZZZ;
-        led[1] = blink.blink_slow;
+        ledt = 10bX000000000;
+        ledt[9] = blink.blink_fast;
         
         fourty.d = fourty.q + 1;
         if(fourty.q[31] == 1){
@@ -174,13 +194,17 @@ module timer (
           
           twenty.d = twenty.q + 1;
           if(twenty.q[30] == 1){
-            
-            twenty.d[29:0] = 0;
+            twenty.d = 0;
+            fourty.d = 0;
             timer.d = timer.TIMEOUT;
           }
         }
       timer.TIMEOUT:
         timeout = 1;
+    }
+
+    if(state == 0){
+    timer.d = timer.IDLE;
     }
   }
 }

@@ -1,57 +1,62 @@
 module buzzer (
     input clk,  // clock
     input rst,  // reset
-    output out
+    output buzz,
+    input state[2] //1 is right, 2 is wrong, 3 is timeout
   ) {
-  var pass;
-  var fail;
-  var buffer;
   
-  dff timer[26] (.clk(clk), .rst(rst));
+  dff timer[27] (.clk(clk), .rst(rst));
+  dff freq[26] (.clk(clk), .rst(rst));
+  fsm right_wrong(.clk(clk), .rst(rst)) = {IDLE, RIGHT, WRONG, TIMEOUT};
+  
   always {
-    out = 1;
-    pass = 0;
-    fail = 0;
+    buzz = 0;
+    freq.d = freq.q + 1;
     timer.d = timer.q + 1;
     
-    //two buzzes for fail
-    if(fail == 1){
-      out = 1;
-      timer.d = 0;
-      buffer = 1;
-      
-      if (timer.q[24] == 1 & buffer == 1){
-        out = 0;
-        timer.d = 0;
-        fail = 2;
-        buffer = 0;
-      }
-    }else if(timer.q[24] == 1 & fail == 2){
-      out = 1;
-      buffer = 1;
-      timer.d = 0;
-      
-      if (timer.q[24] == 1 & buffer == 1){
-        out = 0;
-        fail = 0;
-        timer.d = 0;
-        buffer = 0;
-      }
-      
-    }
     
-    //one buzz for pass
-    if(pass == 1){
-      out = 1;
-      timer.d = 0;
-      buffer = 1;
-      if (timer.q[24] == 1 & buffer == 1){
-        out = 0;
-        timer.d = 0;
-        buffer = 0;
-        pass = 0;
-        
-      }
+    
+    case(right_wrong.q){
+      right_wrong.IDLE:
+        buzz = 0;
+        if       (state == 1){
+          timer.d = 0;
+          right_wrong.d = right_wrong.RIGHT;
+        }else if (state == 2){
+          timer.d = 0;
+          right_wrong.d = right_wrong.WRONG;
+        }else if (state == 3){
+          timer.d = 0;
+          right_wrong.d = right_wrong.TIMEOUT;
+        }
+      
+      right_wrong.RIGHT:
+        if(freq.q[14] == 1){
+          buzz = 1;
+        }
+        if (timer.q[24] == 1){
+          timer.d = 0;
+          right_wrong.d = right_wrong.IDLE;
+        }
+      
+      
+      right_wrong.WRONG:
+        if(freq.q[18] == 1){
+          buzz = 1;
+        }
+        if (timer.q[26] == 1){
+          timer.d = 0;
+          right_wrong.d = right_wrong.IDLE;
+        }
+      
+      right_wrong.TIMEOUT:
+        if(freq.q[18] == 1){
+          buzz = 1;
+        }
+        if (timer.q[26] == 1){
+          timer.d = 0;
+          right_wrong.d = right_wrong.IDLE;
+        }
     }
   }
 }

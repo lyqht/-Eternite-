@@ -46,7 +46,7 @@ NET "right_led" LOC = P9 | IOSTANDARD = LVTTL;
 NET "wrong_led" LOC = P7 | IOSTANDARD = LVTTL;
 
 #buzzer KIV
-NET "buzzer" LOC = P5 | IOSTANDARD = LVTTL;
+NET "buzz" LOC = P5 | IOSTANDARD = LVTTL;
 
 
 

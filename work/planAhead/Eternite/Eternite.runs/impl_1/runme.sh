@@ -40,4 +40,8 @@ EAStep()
      fi
 }
 
-EAStep bitgen "mojo_top_0_routed.ncd" "mojo_top_0.bit" "mojo_top_0.pcf" -g Binary:Yes -g Compress -w -intstyle pa
+EAStep ngdbuild -intstyle ise -p xc6slx9tqg144-2 -dd _ngo -uc "mojo_top_0.ucf" "mojo_top_0.edf"
+EAStep map -intstyle pa -w -pr b -mt on "mojo_top_0.ngd"
+EAStep par -intstyle pa "mojo_top_0.ncd" -w "mojo_top_0_routed.ncd" -mt on
+EAStep trce -intstyle ise -o "mojo_top_0.twr" -v 30 -l 30 "mojo_top_0_routed.ncd" "mojo_top_0.pcf"
+EAStep xdl -secure -ncd2xdl -nopips "mojo_top_0_routed.ncd" "mojo_top_0_routed.xdl"
