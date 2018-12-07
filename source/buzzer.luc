@@ -31,9 +31,11 @@ module buzzer (
         }
       
       right_wrong.RIGHT:
-        if(freq.q[14] == 1){
+        
+        buzz = 1;
+        /*if(freq.q[14] == 1){
           buzz = 1;
-        }
+        }*/
         if (timer.q[24] == 1){
           timer.d = 0;
           right_wrong.d = right_wrong.IDLE;
@@ -41,16 +43,16 @@ module buzzer (
       
       
       right_wrong.WRONG:
-        if(freq.q[18] == 1){
+        if(freq.q[15] == 1){
           buzz = 1;
         }
-        if (timer.q[26] == 1){
+        if (timer.q[25] == 1){
           timer.d = 0;
           right_wrong.d = right_wrong.IDLE;
         }
       
       right_wrong.TIMEOUT:
-        if(freq.q[18] == 1){
+        if(freq.q[15] == 1){
           buzz = 1;
         }
         if (timer.q[26] == 1){

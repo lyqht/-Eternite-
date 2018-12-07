@@ -5,7 +5,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/blinker_6.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/blinker_6.v"/>
-        <Attr Name="ImportTime" Val="1543691661"/>
+        <Attr Name="ImportTime" Val="1544154369"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -14,7 +14,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/timer_4.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/timer_4.v"/>
-        <Attr Name="ImportTime" Val="1543691661"/>
+        <Attr Name="ImportTime" Val="1544154369"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -23,7 +23,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/right_wrong_2.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/right_wrong_2.v"/>
-        <Attr Name="ImportTime" Val="1543691661"/>
+        <Attr Name="ImportTime" Val="1544154369"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -32,7 +32,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/reset_conditioner_5.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/reset_conditioner_5.v"/>
-        <Attr Name="ImportTime" Val="1543691661"/>
+        <Attr Name="ImportTime" Val="1544154369"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -41,7 +41,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/Eternite_alufunctions_1.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/Eternite_alufunctions_1.v"/>
-        <Attr Name="ImportTime" Val="1543691661"/>
+        <Attr Name="ImportTime" Val="1544154369"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -50,7 +50,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/buzzer_3.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/buzzer_3.v"/>
-        <Attr Name="ImportTime" Val="1543691661"/>
+        <Attr Name="ImportTime" Val="1544154369"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -59,7 +59,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/mojo_top_0.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/mojo_top_0.v"/>
-        <Attr Name="ImportTime" Val="1543691661"/>
+        <Attr Name="ImportTime" Val="1544154369"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>

@@ -22,16 +22,8 @@ var ISEJScriptLib = RDScrDir + "/ISEWrap.js";
 eval( EAInclude(ISEJScriptLib) );
 
 
-ISEStep( "ngdbuild",
-         "-intstyle ise -p xc6slx9tqg144-2 -dd _ngo -uc \"mojo_top_0.ucf\" \"mojo_top_0.edf\"" );
-ISEStep( "map",
-         "-intstyle pa -w -pr b -mt on \"mojo_top_0.ngd\"" );
-ISEStep( "par",
-         "-intstyle pa \"mojo_top_0.ncd\" -w \"mojo_top_0_routed.ncd\" -mt on" );
-ISEStep( "trce",
-         "-intstyle ise -o \"mojo_top_0.twr\" -v 30 -l 30 \"mojo_top_0_routed.ncd\" \"mojo_top_0.pcf\"" );
-ISEStep( "xdl",
-         "-secure -ncd2xdl -nopips \"mojo_top_0_routed.ncd\" \"mojo_top_0_routed.xdl\"" );
+ISEStep( "bitgen",
+         "\"mojo_top_0_routed.ncd\" \"mojo_top_0.bit\" \"mojo_top_0.pcf\" -g Binary:Yes -g Compress -w -intstyle pa" );
 
 
 

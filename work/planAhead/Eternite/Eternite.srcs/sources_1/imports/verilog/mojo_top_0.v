@@ -421,9 +421,9 @@ module mojo_top_0 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_count_q <= 1'h0;
+      M_b_q <= 1'h0;
     end else begin
-      M_count_q <= M_count_d;
+      M_b_q <= M_b_d;
     end
   end
   
@@ -448,9 +448,9 @@ module mojo_top_0 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_b_q <= 1'h0;
+      M_count_q <= 1'h0;
     end else begin
-      M_b_q <= M_b_d;
+      M_count_q <= M_count_d;
     end
   end
   

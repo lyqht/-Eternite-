@@ -45,29 +45,19 @@ module mojo_top (
   ) {
   
   sig rst;                  // reset signal
-  sig value[16];            // current value of a or b
+  
   var on;
   var off;
   
   var true;
   var false;
   
-  eternite_alufunctions combine;    //Instantiates the game alu functions module
-  right_wrong answer(.clk(clk), .rst(rst));
-  buzzer buzzer(.clk(clk), .rst(rst));
-  timer timer(.clk(clk), .rst(rst));
+  eternite_fsm eternite;
   
-  dff a[16](.clk(clk), .rst(rst));        //Stores A value
-  dff b[16](.clk(clk), .rst(rst));        //Stores B value
-  
-  dff count[28](.clk(clk), .rst(rst));    //Timer
-  
-  fsm diff_lvls (.clk(clk), .rst(rst)) = {SELECT_DIFFICULTY,
-    E1, E2, E3, E4,
-    M1, M2, M3, M4,
-    H1, H2, H3, H4,
-    TIMEOUT, GAME_CLEARED};
 
+  
+  
+  
   .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
@@ -78,365 +68,35 @@ module mojo_top (
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
     
-    led = 8h00;             // turn LEDs off
+    led = 8hFF;             // turn LEDs off
     spi_miso = bz;          // not using SPI
     spi_channel = bzzzz;    // not using flags
     avr_rx = bz;            // not using serial port
     
     
-    stage = 0;
-    right_led = answer.right_led;
-    wrong_led = answer.wrong_led;
-    answer.state = 0;
     
-    buzzer.state = 0;
-    buzz = buzzer.buzz;
-    timer.state = 0;
-    timer_led = timer.ledt;
-    
-    user_input_led = 0;
-    value[15:0] = user_input[15:0];  //sets value by io_dip switches
-    
-    
-    on = 8hff;              //to switch on all leds at once
-    off = 8h00;             //to switch off all leds at once
-    
-    ledD = toggleD;         //connects diff
-    
-    true = 1;
-    false = 0;
-    
-    
-    combine.a = a.q;        //connects combine a to stored a value
-    combine.b = b.q;        //connects combine b to stored b value
-    combine.alufn = 0;  //connects combine alufn to io_dip switches
-    
+    eternite.user_input = user_input;
     user_input_led = user_input;
-    ledD = toggleD;
+    buzz = eternite.buzz;
+    eternite.clk = clk;
+    eternite.rst = rst;
+    eternite.toggleAB = toggleAB;
+    eternite.enter_btn = enter_btn;
+    stage = eternite.stage;
+    eternite.toggleD = toggleD;
+    ledD = eternite.ledD;
     
-    
-    //Storing A value
-    if (toggleAB == 0  && (diff_lvls.q != diff_lvls.SELECT_DIFFICULTY) ){
-      a.d = value;
-      user_input_led = a.q[15:0];
-      
-    }
-    //Storing B Value
-    else if (toggleAB == 1  && (diff_lvls.q != diff_lvls.SELECT_DIFFICULTY)){
-      b.d = value;
-      user_input_led = b.q[15:0];
-      
-    }
-    
-    count.d = count.q + 1;          //keeps timer counting
-    
-    //<=================================>
-    //<=========Eternite FSM============>
-    //<=================================>
-    case(diff_lvls.q){
-      diff_lvls.SELECT_DIFFICULTY: //timer full
-        right_led = on;
-        wrong_led = on;
-        stage[3:0] = 4b1111;
-        timer.state = 0;
-        
-        //user_input_led = user_input; //players can toggle around in IDLE
-        
-        if(enter_btn == 1 & count.q[25] == 1 ){
-          if (toggleD == 2b10){
-            count.d = 0;
-            //timer.state = 1;
-            diff_lvls.d = diff_lvls.E1;}
-          
-          else if (toggleD == 2b01){
-            count.d = 0;
-            //timer.state = 2;
-            diff_lvls.d = diff_lvls.M1;}
-          
-          else if (toggleD == 2b11){
-            count.d = 0;
-            //timer.state = 3;
-            diff_lvls.d = diff_lvls.H1;}
-        }
-      
-      //<==========GAME CLEARED/FAILED================>
-      diff_lvls.TIMEOUT:
-        wrong_led = on;
-        right_led = off;
-        user_input_led = 16h0000;
-        buzzer.state = 3;
-        answer.state = 0;
-        count.d = count.q + 1;
-        if(count.q[27] == 1){
-          count.d=0;
-          
-          diff_lvls.d = diff_lvls.SELECT_DIFFICULTY;
-        }
-      
-      
-      
-      
-      diff_lvls.GAME_CLEARED:  //timer goes back to full
-        //timer resets
-        stage[3:0] = 4b1111;
-        timer_led[9:0] = 10b1111111111;
-        user_input_led = 16hFFFF;
-        ledD = 2b11;
-        answer.state = 1;
-        buzzer.state = 1;
-        timer.state = 0;
-        if(count.q[26] == 1){
-          count.d = 0;
-          
-          diff_lvls.d = diff_lvls.SELECT_DIFFICULTY;
-        }
-      
-      
-      //<============EASY STATES==============>
-      diff_lvls.E1: //Love Poem: A=1001
-        stage = 4b0001;
-        combine.alufn = Func.LDR;
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          
-          if(combine.out == 16bXXXXxxxxXXXX1001){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.E2;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-          
-        }
-      
-      diff_lvls.E2: //Wedding Vow: A=0110
-        stage = 4b0010;
-        combine.alufn = Func.LDR;
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          
-          if(combine.out == 16bXXXXxxxxXXXX0110){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.E3;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-          
-        }
-      diff_lvls.E3: //Committed Sins: A=1011
-        stage = 4b0100;
-        combine.alufn = Func.LDR;
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          
-          
-          if(combine.out == 16bXXXXxxxxXXXX1011 ){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.E4;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-          
-        }
-      diff_lvls.E4: //Nor_Love: ~(A|B) = 1111
-        stage = 4b1000;
-        combine.alufn = Func.NOR;
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          
-          if((combine.out[3:0] == 4b1111)){
-            answer.state = 1;
-            diff_lvls.d = diff_lvls.GAME_CLEARED;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      
-      
-      //<==========MEDIUM STATES===============>
-      diff_lvls.M1: //Her Wishes: A == B
-        stage = 4b0001;
-        combine.alufn = Func.CMPEQ;
-        combine.a = a.q[7:4];
-        combine.b = b.q[7:4];
-        
-        
-        if(count.q[26] == 1 & enter_btn == 1){
-          count.d = 0;
-          
-          //!!!!!!!!!MUST TEST!!!!!!!!!!!!!!!!!!
-          
-          if( (combine.out[0] == 1) & (a.q[3:0] == 4b1001)){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.M2;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-            
-          }
-        }
-      
-      diff_lvls.M2: //Her Diary: A=1101, answer from easy = 0110
-        stage = 4b0010;
-        combine.alufn = Func.LDR;
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          if(combine.out == 16bXXXXxxxx11010110){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.M3;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      diff_lvls.M3: //Her Soliloquy: A=1101(14th) & B=0011(March), answer from easy A = 1011
-        stage = 4b0100;
-        
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          if(a.q == 16bXXXXxxxx11011011 && b.q == 16bXXXXxxxx0011XXXX ){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.M4;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      diff_lvls.M4: //Futile Endeavour: A*B=0, ignore Easy
-        stage = 4b1000;
-        combine.alufn = Func.MUL;
-        combine.a = a.q[7:0];
-        combine.b = b.q[7:0];
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          if(combine.out == 0){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.GAME_CLEARED;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      
-      
-      //<===========HARD STATES================>
-      diff_lvls.H1: //His Wishes: A = 0010 0010 B = 0001 1011 (221B)
-        stage = 4b0001;
-        
-        combine.alufn = Func.CMPEQ;
-        combine.a = a.q[7:4];
-        combine.b = b.q[7:4];
-        
-        //!!!!!!!!!!!!!!!MUST TEST!!!!!!!!!!!!!!!!!
-        if(count.q[26] == 1 & enter_btn == 1){
-          count.d = 0;
-          if( (a.q == 16b00100010XXXX1001) && (b.q == 16b00011011XXXXXXXX) && (combine.out[0] == 1)  ){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.H2;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      diff_lvls.H2: //XOR_Date: A^B = 0, Medium = 1101, Easy= 0110
-        stage = 4b0010;
-        
-        combine.alufn = Func.XOR;
-        combine.a = a.q[15:8];
-        combine.b = b.q[15:8];
-        
-        //!!!!!!!!MUST TEST!!!!!!!!!!!!!
-        if(count.q[25] == 1 & enter_btn == 1){
-          if( (combine.out == 8hFF) && (a.q[7:0] == 8b11010110) ){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.H3;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      diff_lvls.H3: //Project Completion: A=1100 0101 B:00010001 (12/5/17), ans from medium A=1101(14th) & B=0011(March), answer from easy A = 1011
-        stage = 4b0100;
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          if( (a.q == 16b1100010111011011) && (b.q == 16b000100010011XXXX) ){ //if not working, try change && -> &
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.H4;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      diff_lvls.H4: //Their love overflows: A + B = 1 XXXX XXXX XXXX XXXX
-        stage = 4b1000;
-        
-        combine.alufn = Func.OVFL;
-        
-        if(count.q[25] == 1 & enter_btn == 1){
-          count.d = 0;
-          if(combine.out == 1){
-            answer.state = 1;
-            buzzer.state = 1;
-            diff_lvls.d = diff_lvls.GAME_CLEARED;
-          }else{
-            answer.state = 2;
-            buzzer.state = 2;
-          }
-        }
-      
-      
-    }
-    
-    //Time out reset condition
-    /*if(timeoutmodule.state==over){
-       count.d = 0;
-       diff_lvls.d = diff.lvls.TIMEOUT;
-       }*/
-    
-    if(timer.timeout == 1){
-      //count.d = 0;
-      diff_lvls.d = diff_lvls.TIMEOUT;
-      }
-    
-    if((diff_lvls.q == diff_lvls.E1) | (diff_lvls.q == diff_lvls.E2) | (diff_lvls.q == diff_lvls.E3) | (diff_lvls.q == diff_lvls.E4)){
-      timer.state = 1;
-      }else if((diff_lvls.q == diff_lvls.M1) | (diff_lvls.q == diff_lvls.M2) | (diff_lvls.q == diff_lvls.M3) | (diff_lvls.q == diff_lvls.M4)){
-      timer.state = 2;
-      }else if((diff_lvls.q == diff_lvls.H1) | (diff_lvls.q == diff_lvls.H2) | (diff_lvls.q == diff_lvls.H3) | (diff_lvls.q == diff_lvls.H4) ){
-      timer.state = 3;
-      }else if (diff_lvls.q == diff_lvls.SELECT_DIFFICULTY  |  diff_lvls.q == diff_lvls.GAME_CLEARED | diff_lvls.q == diff_lvls.TIMEOUT){
-      timer.state = 0;
-      }
+    timer_led = eternite.timer_led;
+    right_led = eternite.right_led;
+    wrong_led = eternite.wrong_led;
     
 
-      
-        
+
     
-    //Reset from middle of gameplay
-    if (b.q[15:0] == 16b1111111111111111 && a.q[15:0] == 16b1010101010101010 && enter_btn == 1 && toggleD == 2b00){
-      count.d = 0;
-      diff_lvls.d = diff_lvls.SELECT_DIFFICULTY;
-    }
+    
+    
+
+    
+
   }
 }
