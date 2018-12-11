@@ -266,13 +266,13 @@ module eternite_fsm (
             buzzer.state = 2;
           }
         }
-      diff_lvls.M3: //Her Soliloquy: A=1101(14th) & B=0011(March), answer from easy A = 1011
+      diff_lvls.M3: //Her Soliloquy: A=1110(14th) & B=0011(March), answer from easy A = 1011
         stage = 4b0100;
         
         
         if(count.q[25] == 1 & enter_btn == 1){
           count.d = 0;
-          if(a.q == 16bXXXXxxxx11011011 && b.q == 16bXXXXxxxx0011XXXX ){
+          if(a.q == 16bXXXXxxxx11101011 && b.q == 16bXXXXxxxx0011XXXX ){
             answer.state = 1;
             buzzer.state = 1;
             diff_lvls.d = diff_lvls.M4;
@@ -338,12 +338,12 @@ module eternite_fsm (
             buzzer.state = 2;
           }
         }
-      diff_lvls.H3: //Project Completion: A=1100 0101 B:00010001 (12/5/17), ans from medium A=1101(14th) & B=0011(March), answer from easy A = 1011
+      diff_lvls.H3: //Project Completion: A=1100 0101 B:00010001 (12/5/17), ans from medium A=1110(14th) & B=0011(March), answer from easy A = 1011
         stage = 4b0100;
         
         if(count.q[25] == 1 & enter_btn == 1){
           count.d = 0;
-          if( (a.q == 16b1100010111011011) && (b.q == 16b000100010011XXXX) ){ //if not working, try change && -> &
+          if( (a.q == 16b1100010111101011) && (b.q == 16b000100010011XXXX) ){ //if not working, try change && -> &
             answer.state = 1;
             buzzer.state = 1;
             diff_lvls.d = diff_lvls.H4;

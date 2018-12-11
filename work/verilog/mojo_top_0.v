@@ -34,8 +34,6 @@ module mojo_top_0 (
   
   reg rst;
   
-  reg [15:0] value;
-  
   integer on;
   
   integer off;
@@ -44,414 +42,62 @@ module mojo_top_0 (
   
   integer false;
   
-  wire [16-1:0] M_combine_out;
-  reg [16-1:0] M_combine_a;
-  reg [16-1:0] M_combine_b;
-  reg [3-1:0] M_combine_alufn;
-  eternite_alufunctions_1 combine (
-    .a(M_combine_a),
-    .b(M_combine_b),
-    .alufn(M_combine_alufn),
-    .out(M_combine_out)
+  wire [2-1:0] M_eternite_ledD;
+  wire [16-1:0] M_eternite_user_input_led;
+  wire [4-1:0] M_eternite_stage;
+  wire [1-1:0] M_eternite_right_led;
+  wire [1-1:0] M_eternite_wrong_led;
+  wire [1-1:0] M_eternite_buzz;
+  wire [10-1:0] M_eternite_timer_led;
+  reg [1-1:0] M_eternite_clk;
+  reg [1-1:0] M_eternite_rst;
+  reg [2-1:0] M_eternite_toggleD;
+  reg [16-1:0] M_eternite_user_input;
+  reg [1-1:0] M_eternite_toggleAB;
+  reg [1-1:0] M_eternite_enter_btn;
+  eternite_fsm_1 eternite (
+    .clk(M_eternite_clk),
+    .rst(M_eternite_rst),
+    .toggleD(M_eternite_toggleD),
+    .user_input(M_eternite_user_input),
+    .toggleAB(M_eternite_toggleAB),
+    .enter_btn(M_eternite_enter_btn),
+    .ledD(M_eternite_ledD),
+    .user_input_led(M_eternite_user_input_led),
+    .stage(M_eternite_stage),
+    .right_led(M_eternite_right_led),
+    .wrong_led(M_eternite_wrong_led),
+    .buzz(M_eternite_buzz),
+    .timer_led(M_eternite_timer_led)
   );
-  
-  wire [1-1:0] M_answer_right_led;
-  wire [1-1:0] M_answer_wrong_led;
-  reg [2-1:0] M_answer_state;
-  right_wrong_2 answer (
-    .clk(clk),
-    .rst(rst),
-    .state(M_answer_state),
-    .right_led(M_answer_right_led),
-    .wrong_led(M_answer_wrong_led)
-  );
-  
-  wire [1-1:0] M_buzzer_buzz;
-  reg [2-1:0] M_buzzer_state;
-  buzzer_3 buzzer (
-    .clk(clk),
-    .rst(rst),
-    .state(M_buzzer_state),
-    .buzz(M_buzzer_buzz)
-  );
-  
-  wire [10-1:0] M_timer_ledt;
-  wire [1-1:0] M_timer_timeout;
-  reg [2-1:0] M_timer_state;
-  timer_4 timer (
-    .clk(clk),
-    .rst(rst),
-    .state(M_timer_state),
-    .ledt(M_timer_ledt),
-    .timeout(M_timer_timeout)
-  );
-  
-  reg [15:0] M_a_d, M_a_q = 1'h0;
-  
-  reg [15:0] M_b_d, M_b_q = 1'h0;
-  
-  reg [27:0] M_count_d, M_count_q = 1'h0;
-  
-  
-  localparam SELECT_DIFFICULTY_diff_lvls = 4'd0;
-  localparam E1_diff_lvls = 4'd1;
-  localparam E2_diff_lvls = 4'd2;
-  localparam E3_diff_lvls = 4'd3;
-  localparam E4_diff_lvls = 4'd4;
-  localparam M1_diff_lvls = 4'd5;
-  localparam M2_diff_lvls = 4'd6;
-  localparam M3_diff_lvls = 4'd7;
-  localparam M4_diff_lvls = 4'd8;
-  localparam H1_diff_lvls = 4'd9;
-  localparam H2_diff_lvls = 4'd10;
-  localparam H3_diff_lvls = 4'd11;
-  localparam H4_diff_lvls = 4'd12;
-  localparam TIMEOUT_diff_lvls = 4'd13;
-  localparam GAME_CLEARED_diff_lvls = 4'd14;
-  
-  reg [3:0] M_diff_lvls_d, M_diff_lvls_q = SELECT_DIFFICULTY_diff_lvls;
   
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_5 reset_cond (
+  reset_conditioner_2 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
   
   always @* begin
-    M_diff_lvls_d = M_diff_lvls_q;
-    M_count_d = M_count_q;
-    M_b_d = M_b_q;
-    M_a_d = M_a_q;
-    
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
-    led = 8'h00;
+    led = 8'hff;
     spi_miso = 1'bz;
     spi_channel = 4'bzzzz;
     avr_rx = 1'bz;
-    stage = 1'h0;
-    right_led = M_answer_right_led;
-    wrong_led = M_answer_wrong_led;
-    M_answer_state = 1'h0;
-    M_buzzer_state = 1'h0;
-    buzz = M_buzzer_buzz;
-    M_timer_state = 1'h0;
-    timer_led = M_timer_ledt;
-    user_input_led = 1'h0;
-    value[0+15-:16] = user_input[0+15-:16];
-    on = 8'hff;
-    off = 8'h00;
-    ledD = toggleD;
-    true = 1'h1;
-    false = 1'h0;
-    M_combine_a = M_a_q;
-    M_combine_b = M_b_q;
-    M_combine_alufn = 1'h0;
+    M_eternite_user_input = user_input;
     user_input_led = user_input;
-    ledD = toggleD;
-    if (toggleAB == 1'h0 && (M_diff_lvls_q != SELECT_DIFFICULTY_diff_lvls)) begin
-      M_a_d = value;
-      user_input_led = M_a_q[0+15-:16];
-    end else begin
-      if (toggleAB == 1'h1 && (M_diff_lvls_q != SELECT_DIFFICULTY_diff_lvls)) begin
-        M_b_d = value;
-        user_input_led = M_b_q[0+15-:16];
-      end
-    end
-    M_count_d = M_count_q + 1'h1;
-    
-    case (M_diff_lvls_q)
-      SELECT_DIFFICULTY_diff_lvls: begin
-        right_led = on;
-        wrong_led = on;
-        stage[0+3-:4] = 4'hf;
-        M_timer_state = 1'h0;
-        if (enter_btn == 1'h1 & M_count_q[25+0-:1] == 1'h1) begin
-          if (toggleD == 2'h2) begin
-            M_count_d = 1'h0;
-            M_diff_lvls_d = E1_diff_lvls;
-          end else begin
-            if (toggleD == 2'h1) begin
-              M_count_d = 1'h0;
-              M_diff_lvls_d = M1_diff_lvls;
-            end else begin
-              if (toggleD == 2'h3) begin
-                M_count_d = 1'h0;
-                M_diff_lvls_d = H1_diff_lvls;
-              end
-            end
-          end
-        end
-      end
-      TIMEOUT_diff_lvls: begin
-        wrong_led = on;
-        right_led = off;
-        user_input_led = 16'h0000;
-        M_buzzer_state = 2'h3;
-        M_answer_state = 1'h0;
-        M_count_d = M_count_q + 1'h1;
-        if (M_count_q[27+0-:1] == 1'h1) begin
-          M_count_d = 1'h0;
-          M_diff_lvls_d = SELECT_DIFFICULTY_diff_lvls;
-        end
-      end
-      GAME_CLEARED_diff_lvls: begin
-        stage[0+3-:4] = 4'hf;
-        timer_led[0+9-:10] = 10'h3ff;
-        user_input_led = 16'hffff;
-        ledD = 2'h3;
-        M_answer_state = 1'h1;
-        M_buzzer_state = 1'h1;
-        M_timer_state = 1'h0;
-        if (M_count_q[26+0-:1] == 1'h1) begin
-          M_count_d = 1'h0;
-          M_diff_lvls_d = SELECT_DIFFICULTY_diff_lvls;
-        end
-      end
-      E1_diff_lvls: begin
-        stage = 4'h1;
-        M_combine_alufn = 3'h5;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if (M_combine_out == 16'bxxxxxxxxxxxx1001) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = E2_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      E2_diff_lvls: begin
-        stage = 4'h2;
-        M_combine_alufn = 3'h5;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if (M_combine_out == 16'bxxxxxxxxxxxx0110) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = E3_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      E3_diff_lvls: begin
-        stage = 4'h4;
-        M_combine_alufn = 3'h5;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if (M_combine_out == 16'bxxxxxxxxxxxx1011) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = E4_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      E4_diff_lvls: begin
-        stage = 4'h8;
-        M_combine_alufn = 3'h2;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if ((M_combine_out[0+3-:4] == 4'hf)) begin
-            M_answer_state = 1'h1;
-            M_diff_lvls_d = GAME_CLEARED_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      M1_diff_lvls: begin
-        stage = 4'h1;
-        M_combine_alufn = 3'h4;
-        M_combine_a = M_a_q[4+3-:4];
-        M_combine_b = M_b_q[4+3-:4];
-        if (M_count_q[26+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if ((M_combine_out[0+0-:1] == 1'h1) & (M_a_q[0+3-:4] == 4'h9)) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = M2_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      M2_diff_lvls: begin
-        stage = 4'h2;
-        M_combine_alufn = 3'h5;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if (M_combine_out == 16'bxxxxxxxx11010110) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = M3_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      M3_diff_lvls: begin
-        stage = 4'h4;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if (M_a_q == 16'bxxxxxxxx11011011 && M_b_q == 16'bxxxxxxxx0011xxxx) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = M4_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      M4_diff_lvls: begin
-        stage = 4'h8;
-        M_combine_alufn = 3'h6;
-        M_combine_a = M_a_q[0+7-:8];
-        M_combine_b = M_b_q[0+7-:8];
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if (M_combine_out == 1'h0) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = GAME_CLEARED_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      H1_diff_lvls: begin
-        stage = 4'h1;
-        M_combine_alufn = 3'h4;
-        M_combine_a = M_a_q[4+3-:4];
-        M_combine_b = M_b_q[4+3-:4];
-        if (M_count_q[26+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if ((M_a_q == 16'b00100010xxxx1001) && (M_b_q == 16'b00011011xxxxxxxx) && (M_combine_out[0+0-:1] == 1'h1)) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = H2_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      H2_diff_lvls: begin
-        stage = 4'h2;
-        M_combine_alufn = 3'h3;
-        M_combine_a = M_a_q[8+7-:8];
-        M_combine_b = M_b_q[8+7-:8];
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          if ((M_combine_out == 8'hff) && (M_a_q[0+7-:8] == 8'hd6)) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = H3_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      H3_diff_lvls: begin
-        stage = 4'h4;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if ((M_a_q == 16'hc5db) && (M_b_q == 16'b000100010011xxxx)) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = H4_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-      H4_diff_lvls: begin
-        stage = 4'h8;
-        M_combine_alufn = 3'h7;
-        if (M_count_q[25+0-:1] == 1'h1 & enter_btn == 1'h1) begin
-          M_count_d = 1'h0;
-          if (M_combine_out == 1'h1) begin
-            M_answer_state = 1'h1;
-            M_buzzer_state = 1'h1;
-            M_diff_lvls_d = GAME_CLEARED_diff_lvls;
-          end else begin
-            M_answer_state = 2'h2;
-            M_buzzer_state = 2'h2;
-          end
-        end
-      end
-    endcase
-    if (M_timer_timeout == 1'h1) begin
-      M_diff_lvls_d = TIMEOUT_diff_lvls;
-    end
-    if ((M_diff_lvls_q == E1_diff_lvls) | (M_diff_lvls_q == E2_diff_lvls) | (M_diff_lvls_q == E3_diff_lvls) | (M_diff_lvls_q == E4_diff_lvls)) begin
-      M_timer_state = 1'h1;
-    end else begin
-      if ((M_diff_lvls_q == M1_diff_lvls) | (M_diff_lvls_q == M2_diff_lvls) | (M_diff_lvls_q == M3_diff_lvls) | (M_diff_lvls_q == M4_diff_lvls)) begin
-        M_timer_state = 2'h2;
-      end else begin
-        if ((M_diff_lvls_q == H1_diff_lvls) | (M_diff_lvls_q == H2_diff_lvls) | (M_diff_lvls_q == H3_diff_lvls) | (M_diff_lvls_q == H4_diff_lvls)) begin
-          M_timer_state = 2'h3;
-        end else begin
-          if (M_diff_lvls_q == SELECT_DIFFICULTY_diff_lvls | M_diff_lvls_q == GAME_CLEARED_diff_lvls | M_diff_lvls_q == TIMEOUT_diff_lvls) begin
-            M_timer_state = 1'h0;
-          end
-        end
-      end
-    end
-    if (M_b_q[0+15-:16] == 16'hffff && M_a_q[0+15-:16] == 16'haaaa && enter_btn == 1'h1 && toggleD == 2'h0) begin
-      M_count_d = 1'h0;
-      M_diff_lvls_d = SELECT_DIFFICULTY_diff_lvls;
-    end
+    buzz = M_eternite_buzz;
+    M_eternite_clk = clk;
+    M_eternite_rst = rst;
+    M_eternite_toggleAB = toggleAB;
+    M_eternite_enter_btn = enter_btn;
+    stage = M_eternite_stage;
+    M_eternite_toggleD = toggleD;
+    ledD = M_eternite_ledD;
+    timer_led = M_eternite_timer_led;
+    right_led = M_eternite_right_led;
+    wrong_led = M_eternite_wrong_led;
   end
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_b_q <= 1'h0;
-    end else begin
-      M_b_q <= M_b_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_diff_lvls_q <= 1'h0;
-    end else begin
-      M_diff_lvls_q <= M_diff_lvls_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_a_q <= 1'h0;
-    end else begin
-      M_a_q <= M_a_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_count_q <= 1'h0;
-    end else begin
-      M_count_q <= M_count_d;
-    end
-  end
-  
 endmodule
